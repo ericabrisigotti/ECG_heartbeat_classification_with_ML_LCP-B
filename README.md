@@ -9,6 +9,6 @@ The ECG dataset consists of 450 Holter ECGs collected in the past decade by the 
 
 We looked outwards for training datasets since we implemented supervised machine learning techniques. The most similar dataset found was the [PhysioNet St Petersburg INCART 12-lead Arrhythmia Database dataset](https://physionet.org/content/incartdb/1.0.0/). This database consists of 75 annotated recordings extracted from 32 Holter records. Each record is 30 minutes long and contains 12 standard leads, each sampled at 257 Hz, with reference annotation files, totaling over 175000 beat annotations in all.
 
-The ML model was trained in the "ECG_Physionet" file: the trained model was then saved and uploaded in the "ECG_Mortara" file to predict the type of heartbeat.
+The ML model was trained in the "ECG_Physionet" file: the trained model was then saved and uploaded in the "ECG_Mortara" file to predict the type of heartbeat. A second set of predictions was made in "ECG_Mortara_extended" file.
 
 A Plotly Dash interface (in the "ECG_Doctor" file) was prepared to eventually check the ML predictions with a Cardiologist.
