@@ -11,7 +11,7 @@ We found a similar dataset to use as a training one:  [PhysioNet St Petersburg I
 
 To summarize, we use the latter dataset to develop an overall analysis algorithm and save a pre-trained ML model. The presence of labels in this dataset allows us to find the accuracy of the developed analysis. Then we follow the same steps for the former (Mortara) dataset and classify heartbeats using saved ML model.
 
-## **The files in these directory are**:
+## **The files in this directory are**:
 1) ECG_Physionet.ipynb: a jupyter notebook with development of the signal preprocessing, heartbeat detection and segmentation, machine learning model.
 2) ECG_Mortara.ipynb/ ECG_Mortara_Extended.ipynb: same analysis as in the previous file, but applied to Mortara dataset using the saved ML model.
 3) ECG_Doctor.ipynb: jupyter notebook for visualizing the results of application of ML model to the Mortara dataset. It consists a Plotly Dash interface.
