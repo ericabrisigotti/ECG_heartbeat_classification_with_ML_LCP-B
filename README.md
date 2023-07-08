@@ -40,33 +40,33 @@ Before going directly to feature extraction, we discard heartbeats with extremel
 
 The features that we extract (all the positions are relative to each heartbeat):
 
-a) discrete wavelet transform coefficients
+- discrete wavelet transform coefficients
 
-b) the start and end of the QRS complex
+- the start and end of the QRS complex
 
-c) the (real) position and height of the R peak
+- the (real) position and height of the R peak
 
-d) the difference (err) between the two estimates of the position of the R peak
+- the difference (err) between the two estimates of the position of the R peak
 
-e) the value and position of the maximum of the heartbeat 
+- the value and position of the maximum of the heartbeat 
 
-d) the value and position of the minimum of the heartbeat
+- the value and position of the minimum of the heartbeat
 
-f) the positive and negative integral of the heartbeat 
+- the positive and negative integral of the heartbeat 
 
-g) the positive and negative integral of the QRS complex 
+- the positive and negative integral of the QRS complex 
 
-h) the start and end of the P peak 
+- the start and end of the P peak 
 
-i) the position and height of the P peak
+- the position and height of the P peak
 
-j) the positive and negative integral of the P peak 
+- the positive and negative integral of the P peak 
 
-k) the start and end of the T peak 
+- the start and end of the T peak 
 
-l) the position and height of the T peak
+- the position and height of the T peak
 
-m) the positive and negative integral of the T peak
+- the positive and negative integral of the T peak
 
 Such features are all relative to the heartbeat and converted from indexes to seconds when appropriate. We collected them in a matrix that is used as the input of out ML algorithm.
 
