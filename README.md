@@ -39,7 +39,7 @@ We would like to separate each heartbeat and later compose a feature vector for 
 
 Before going directly to feature extraction, we discard heartbeats with extremely anomalous characteristics, since it is either the noise or the algorithm mistake and we do not want to analyze and process them further. Such selection is based on the distributions of RR length, mean signal over the heartbeat, and standard deviation of the signal over the heartbeat.
 
-The features that we extract (all the positions are relative to each heartbeat):
+The features that we extract:
 
 - discrete wavelet transform coefficients
 
