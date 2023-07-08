@@ -1,4 +1,4 @@
-# **ECG HEARTBEAT CLASSIFICATION WITH ML - Mortara**
+# **ECG HEARTBEAT CLASSIFICATION WITH ML**
 by Erica Brisigotti, Ekaterina Chueva, Sofia Pacheco Garcia, Nadillia Sahputra
 
 This project is part of the Laboratory of Computational Physics (mod. B) class from the Physics of Data Master's Degree, held at the University of Padova during Academic Year 2022-2023. The project was supervised by professors Alberto Zucchetta and Marco Zanetti, and teaching assistant Federico Agostini.
