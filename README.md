@@ -1,25 +1,25 @@
 # **ECG HEARTBEAT CLASSIFICATION WITH ML - Mortara**
 by Erica Brisigotti, Ekaterina Chueva, Sofia Pacheco Garcia, Nadillia Sahputra
 
-This project is part of the Laboratory of Computational Physics (mod. B) class from the Physics of Data Master's Degree, held at the University of Padova during Academic Year 2022-2023. The project was supervised by professors Alberto Zucchetta, Marco Zanetti and teaching assistant Federico Agostini.
+This project is part of the Laboratory of Computational Physics (mod. B) class from the Physics of Data Master's Degree, held at the University of Padova during Academic Year 2022-2023. The project was supervised by professors Alberto Zucchetta and Marco Zanetti, and teaching assistant Federico Agostini.
 
-The current work is motivated by the fact that cardiologists could spend up to several weeks labelling the electrocardiogram signal (ECGs), but the machine learning can help with this task and therefore save the doctors’ time. The goal of the project was to implement a machine learning algorithm that is able to classify heartbeats to normal and abnormal ones (corresponding to different cardio diseases) using given ECGs.
+The current work is motivated by the fact that cardiologists can spend up to several weeks labeling the electrocardiogram signal (ECGs): machine learning can take care of this task and help save doctors’ time and improve efficiency in the healthcare system. 
 
-The target dataset is 450 Holter ECGs collected in the past decade by the Cardiology Department of the University of Padova. We refer to this dataset as ‘Mortara dataset’. Each ECG is a 12 leads, 24h recording of a single patient. Unfortunately, we could not use any of the recordings for training a machine learning model, because it has no labels and we would like to develop a supervised ML algorithm.
+The goal of the project is to implement a machine learning algorithm that is able to classify heartbeats into normal and abnormal ones (corresponding to different cardio diseases) using given ECGs. The target dataset is 450 Holter ECGs collected in the past decade by the Cardiology Department of the University of Padova. We refer to this dataset as ‘Mortara dataset’. Each ECG is a 12 leads, 24h recording of a single patient. Unfortunately, we could not use any of the recordings for training a machine learning model, because it has no labels and we would like to develop a supervised ML algorithm.
 
-We found a similar dataset to use as a training one:  [PhysioNet St Petersburg INCART 12-lead Arrhythmia Database dataset](https://physionet.org/content/incartdb/1.0.0/). This database consists of 75 annotated recordings extracted from 32 Holter records. Each record is 30 minutes long and contains 12 standard leads, each sampled at 257 Hz, with reference annotation files, totalling over 175000 beat annotations in all.
+We found a similar dataset to use as a training one:  [PhysioNet St Petersburg INCART 12-lead Arrhythmia Database dataset](https://physionet.org/content/incartdb/1.0.0/). This database consists of 75 annotated recordings extracted from 32 Holter records. Each record is 30 minutes long and contains 12 standard leads, each sampled at 257 Hz, with reference annotation files, totaling over 175000 beat annotations in all.
 
-To summarize, we use the latter dataset to develop an overall analysis algorithm and save a pre-trained ML model. The presence of labels in this dataset allows us to find the accuracy of the developed analysis. Then we follow the same steps for the former (Mortara) dataset and classify heartbeats using saved ML model.
+To summarize, we firsly use the latter dataset to develop an overall analysis algorithm and save a pre-trained ML model. The presence of labels in this dataset allows us to estimate the accuracy of the developed analysis. We then follow the same steps for the former (Mortara) dataset and classify heartbeats using the saved ML model.
 
 ## **The files in this directory are**:
-1) ECG_Physionet.ipynb: a jupyter notebook with development of the signal preprocessing, heartbeat detection and segmentation, machine learning model.
-2) ECG_Mortara.ipynb/ ECG_Mortara_Extended.ipynb: same analysis as in the previous file, but applied to Mortara dataset using the saved ML model.
-3) ECG_Doctor.ipynb: jupyter notebook for visualizing the results of application of ML model to the Mortara dataset. It consists a Plotly Dash interface.
-4) xgboost_param_nwin4.csv: a csv file with saved ML parameters after GridSearch
+1) <code>ECG_Physionet.ipynb<\code>: a jupyter notebook with development of the signal preprocessing, heartbeat detection and segmentation, and machine learning model.
+2) <code>ECG_Mortara.ipynb<\code>/<code>ECG_Mortara_Extended.ipynb<\code>: same analysis as in the previous file, but applied to 2 halves of a Mortara dataset using the saved ML model.
+3) <code>ECG_Doctor.ipynb<\code>: a jupyter notebook for visualizing the predictions made by the ML model on the Mortara dataset. It consists of a Plotly Dash interface.
+4) xgboost_param_nwin4.csv: a CSV file with saved (optimal) ML parameters after GridSearch
 5) multi_maxdepth5_nwindow3.json: a JSON file with pre-trained on Physionet dataset ML model
 
 ## **Content of the project**
-Here we give a brief description of the project content to give an idea of the analysis. For in depth understanding it is necessary to consult the ECG_Physionet.ipynb file.
+Here we give a brief description of the project content to give an idea of the analysis. For an in-depth understanding, it is necessary to consult the ECG_Physionet.ipynb file.
 
 ### 1) Preprocessing of the data
 
