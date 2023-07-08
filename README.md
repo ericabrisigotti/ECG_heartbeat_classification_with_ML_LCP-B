@@ -15,28 +15,28 @@ To summarize, we firsly use the latter dataset to develop an overall analysis al
 1) <code>ECG_Physionet.ipynb</code>: a jupyter notebook with development of the signal preprocessing, heartbeat detection and segmentation, and machine learning model.
 2) <code>ECG_Mortara.ipynb</code>/<code>ECG_Mortara_Extended.ipynb</code>: same analysis as in the previous file, but applied to 2 halves of a Mortara dataset using the saved ML model.
 3) <code>ECG_Doctor.ipynb</code>: a jupyter notebook for visualizing the predictions made by the ML model on the Mortara dataset. It consists of a Plotly Dash interface.
-4) xgboost_param_nwin4.csv: a CSV file with saved (optimal) ML parameters after GridSearch
-5) multi_maxdepth5_nwindow3.json: a JSON file with pre-trained on Physionet dataset ML model
+4) <code>xgboost_param_nwin4.csv</code>: a CSV file with saved (optimal) ML parameters after GridSearch
+5) <code>multi_maxdepth5_nwindow3.json</code>: a JSON file with pre-trained on Physionet dataset ML model
 
 ## **Content of the project**
-Here we give a brief description of the project content to give an idea of the analysis. For an in-depth understanding, it is necessary to consult the ECG_Physionet.ipynb file.
+Here we give a brief description of the project content to give an idea of the analysis. For an in-depth understanding, it is necessary to consult the <code>ECG_Physionet.ipynb</code> file.
 
 ### 1) Preprocessing of the data
 
-In order to preprocess the data, we apply several filters: band-pass filter in frequency in Fast Fourier Transform, additional noise filtering with Discrete Wavelet Transform and finally we also eliminate a baseline wander of the signal. In order to standardize the signal, after all the filtering parts we transform it to the one with mean=0 and std=1.
+To preprocess the data, we apply several filters: band-pass filter in frequency in Fast Fourier Transform, additional noise filtering with Discrete Wavelet Transform, and lastly, we filter out the baseline wander of the signal. We then standardize the signal by transforming it to the one with mean=0 and std=1.
 
 ### 2) R-peaks detection
 
-Since we do not have any annotations (labels) in the Mortara dataset, we had to develop an independent algorithm for detecting the heartbeats (which does not rely on any labels-related information). It was done with algorithm based on fitting the signal with parabola. Then, since we have 12 leads and the “real” peak should be present in the majority of them, we confirm the peak as detected only if the peak is presented in more than a certain number of leads (we set a threshold).
+Since we do not have any annotations (labels) in the Mortara dataset, we had to develop an independent algorithm for detecting the heartbeats (which does not rely on any labels-related information). Peak identification was implemented with an algorithm based on fitting the signal in each lead with parabolas. Then, since we have 12 leads and the “real” peak should be present in the majority of them, we confirm the peak as detected only if the peak is presented in more than a certain number of leads (we set a threshold).
 
-We find the balanced accuracy of the R-peaks detection algorithm for the Physionet dataset: 95%.
+We calculate the balanced accuracy of the R-peaks detection algorithm for the Physionet dataset: 95%.
 
 ### 3) Segmentation of the signal
-We would like to separate each heartbeat and later compose a feature vector for each. For this we use the previously found R-peaks and the knowledge about the duration of the heartbeat.
+We would like to separate each heartbeat and later compose a feature vector for each. For this, we use the previously found R-peaks and the known proportions between the duration of phases of the heartbeat.
 
 ### 4) Extraction of features
 
-Before going directly to feature extraction, we discard heartbeats with extremely anomalous characteristics, since it is either the noise or the algorithm mistake and we do not want to analyse and process this further.
+Before going directly to feature extraction, we discard heartbeats with extremely anomalous characteristics, since it is either the noise or the algorithm mistake and we do not want to analyze and process them further. Such selection is based on the distributions of RR length, mean signal over the heartbeat, and standard deviation of the signal over the heartbeat.
 
 The features that we extract (all the positions are relative to each heartbeat):
 
@@ -68,15 +68,15 @@ l) the position and height of the T peak
 
 m) the positive and negative integral of the T peak
 
-After we construct a feature matrix that we further use for ML.
+Such features are all relative to the heartbeat and converted from indexes to seconds when appropriate. We collected them in a matrix that is used as the input of out ML algorithm.
 
 ### 5) Machine learning part
 
-We select the most popular (> 1%)  classes in the Physionet dataset. These end up consisting of the normal heartbeats (labelled as N) and heartbeats with one of three anomalies: atrial premature contraction (A), right bundle branch block beat (R), premature ventricular contraction (V). All other we merge into one ‘other’ class.
-We then implement a XGBoost multi classification model, pre-train it and save. 
+We select the most popular (> 1%)  classes in the Physionet dataset. These end up consisting of normal heartbeats (labeled as N) and heartbeats with one of three anomalies: atrial premature contraction (A), right bundle branch block beat (R), and premature ventricular contraction (V). All others we merge into one ‘other’ class.
+We then implement an XGBoost multi-classification model, which was pre-trained with the parameters obtained from GridSearch pre-train saved. 
 
-The balanced accuracy appeared to be around 98%. Furthermore, our model has a low false positive  (meaning that normal heartbeats are classified as abnormal) rate: 0.3%, which is crucial for the proposed goal of the project.
+The balanced accuracy is estimated to be around 98%. Furthermore, our model has a low false positive (meaning that normal heartbeats are classified as abnormal) rate: 0.3%, which is crucial for the proposed goal of the project.
 
 ### 6) Test on Mortara dataset
 
-Finally, we test our algorithm on Mortara datasets and visualize the result of classification along with initial signal for doctor’s check.
+Finally, we test our algorithm on Mortara datasets and visualize the result of classification along with the signal for the doctor’s check.
