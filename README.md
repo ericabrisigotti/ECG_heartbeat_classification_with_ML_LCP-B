@@ -27,7 +27,8 @@ To preprocess the data, we apply several filters: band-pass filter in frequency 
 
 ### 2) R-peaks detection
 
-Since we do not have any annotations (labels) in the Mortara dataset, we had to develop an independent algorithm for detecting the heartbeats (which does not rely on any labels-related information). Peak identification was implemented with an algorithm based on fitting the signal in each lead with parabolas. Then, since we have 12 leads and the “real” peak should be present in the majority of them, we confirm the peak as detected only if the peak is presented in more than a certain number of leads (we set a threshold).
+Since we do not have any annotations (labels) in the Mortara dataset, we had to develop an independent algorithm for detecting the heartbeats (which does not rely on any labels-related information). Peak identification was implemented with an algorithm based on the minimization of the error 
+ between the parabola fit of consecutive signal windows and the actual signal for each lead. Then, since we have 12 leads and the “real” peak should be present in the majority of them, we confirm the peak as detected only if the peak is presented in more than a certain number of leads (we set a threshold).
 
 We calculate the balanced accuracy of the R-peaks detection algorithm for the Physionet dataset: 95%.
 
@@ -75,7 +76,7 @@ Such features are all relative to the heartbeat and converted from indexes to se
 We select the most popular (> 1%)  classes in the Physionet dataset. These end up consisting of normal heartbeats (labeled as N) and heartbeats with one of three anomalies: atrial premature contraction (A), right bundle branch block beat (R), and premature ventricular contraction (V). All others we merge into one ‘other’ class.
 We then implement an XGBoost multi-classification model, which was pre-trained with the parameters obtained from GridSearch pre-train saved. 
 
-The balanced accuracy is estimated to be around 98%. Furthermore, our model has a low false positive (meaning that normal heartbeats are classified as abnormal) rate: 0.3%, which is crucial for the proposed goal of the project.
+The balanced accuracy is estimated to be around 98%. Furthermore, our model has a low false positive (normal heartbeats that are classified as abnormal) rate: 0.3%, which is crucial for the proposed goal of the project.
 
 ### 6) Test on Mortara dataset
 
