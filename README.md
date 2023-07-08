@@ -12,9 +12,9 @@ We found a similar dataset to use as a training one:  [PhysioNet St Petersburg I
 To summarize, we firsly use the latter dataset to develop an overall analysis algorithm and save a pre-trained ML model. The presence of labels in this dataset allows us to estimate the accuracy of the developed analysis. We then follow the same steps for the former (Mortara) dataset and classify heartbeats using the saved ML model.
 
 ## **The files in this directory are**:
-1) <code>ECG_Physionet.ipynb<\code>: a jupyter notebook with development of the signal preprocessing, heartbeat detection and segmentation, and machine learning model.
-2) <code>ECG_Mortara.ipynb<\code>/<code>ECG_Mortara_Extended.ipynb<\code>: same analysis as in the previous file, but applied to 2 halves of a Mortara dataset using the saved ML model.
-3) <code>ECG_Doctor.ipynb<\code>: a jupyter notebook for visualizing the predictions made by the ML model on the Mortara dataset. It consists of a Plotly Dash interface.
+1) <code>ECG_Physionet.ipynb</code>: a jupyter notebook with development of the signal preprocessing, heartbeat detection and segmentation, and machine learning model.
+2) <code>ECG_Mortara.ipynb</code>/<code>ECG_Mortara_Extended.ipynb</code>: same analysis as in the previous file, but applied to 2 halves of a Mortara dataset using the saved ML model.
+3) <code>ECG_Doctor.ipynb</code>: a jupyter notebook for visualizing the predictions made by the ML model on the Mortara dataset. It consists of a Plotly Dash interface.
 4) xgboost_param_nwin4.csv: a CSV file with saved (optimal) ML parameters after GridSearch
 5) multi_maxdepth5_nwindow3.json: a JSON file with pre-trained on Physionet dataset ML model
 
