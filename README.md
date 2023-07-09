@@ -17,7 +17,7 @@ To summarize, we firsly use the latter dataset to develop an overall analysis al
 3) <code>ECG_Doctor.ipynb</code>: a jupyter notebook for visualizing the predictions made by the ML model on the Mortara dataset. It consists of a Plotly Dash interface.
 4) <code>xgboost_param_nwin4.csv</code>: a CSV file with saved (optimal) ML parameters after GridSearch
 5) <code>multi_maxdepth5_nwindow3.json</code>: a JSON file with pre-trained on Physionet dataset ML model
-6) <code>everything.csv</code>: a CSV file containing all the information about the Mortara heartbeat including the ML classification results. This is the input file for ECG_Doctor.ipnyb
+6) <code>everything.csv</code>/<code>everything_extended.csv</code>: a CSV file containing all the information about the Mortara heartbeat including the ML classification results. This is the input file for ECG_Doctor.ipnyb
 
 
 ## **Content of the project**
