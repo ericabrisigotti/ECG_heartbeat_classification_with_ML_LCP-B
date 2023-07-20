@@ -35,7 +35,7 @@ Since we do not have any annotations (labels) in the Mortara dataset, we had to 
 We calculate the balanced accuracy of the R-peaks detection algorithm for the Physionet dataset: 95%.
 
 ### 3) Segmentation of the signal
-We would like to separate each heartbeat and later compose a feature vector for each. For this, we use the previously found R-peaks and the known proportions between the duration of phases of the heartbeat.
+We would like to separate each heartbeat with a variable window-size algorithm, to later compose a feature vector for each. For this, we use the previously found R-peaks and the known proportions between the duration of phases of the heartbeat.
 
 ### 4) Extraction of features
 
